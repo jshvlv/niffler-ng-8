@@ -1,7 +1,9 @@
 package guru.qa.niffler.test.web;
 
 
-import guru.qa.niffler.jupiter.Category;
+import com.codeborne.selenide.Selenide;
+import guru.qa.niffler.config.Config;
+import guru.qa.niffler.jupiter.annotation.Category;
 import guru.qa.niffler.jupiter.annotation.Spend;
 import guru.qa.niffler.jupiter.extension.BrowserExtension;
 import guru.qa.niffler.model.CategoryJson;
@@ -21,7 +23,7 @@ public class SpendingTest {
     private MainPage mainPage = new MainPage();
 
     @Spend(
-            username = "admin",
+            username = "duck",
             category = "Обучение",
             description = "Обучение Niffler 2.0",
             amount = 89000.00,
@@ -32,7 +34,7 @@ public class SpendingTest {
         final String newDescription = "Обучение Niffler NG";
 
         loginPage
-                .doLogin("admin", "admin")
+                .doLogin("duck", "duck")
                 .editSpending(spend.description())
                 .editDescription(newDescription);
 
