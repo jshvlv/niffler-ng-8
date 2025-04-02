@@ -3,6 +3,7 @@ package guru.qa.niffler.jupiter.extension;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import guru.qa.niffler.config.Config;
 import io.qameta.allure.Allure;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.extension.AfterEachCallback;
@@ -20,6 +21,7 @@ public class BrowserExtension implements
     AfterEachCallback,
     TestExecutionExceptionHandler,
     LifecycleMethodExecutionExceptionHandler {
+  private static final Config CFG = Config.getInstance();
 
   @Override
   public void afterEach(ExtensionContext context) throws Exception {
@@ -34,6 +36,7 @@ public class BrowserExtension implements
         .savePageSource(false)
         .screenshots(false)
     );
+    Selenide.open(CFG.frontUrl());
   }
 
   @Override
