@@ -29,22 +29,20 @@ public class ProfilePage {
     }
 
     public ProfilePage archiveCategory(String name) {
-        showArchivedCheckbox.shouldBe(visible).click();
+        showArchivedCheckbox.click();
         showArchivedCheckbox.shouldHave(cssClass("Mui-checked"));
         $$x(String.format(categoryRowButtonsXpath, name)).last().shouldHave(attribute("aria-label", "Archive category")).click();
         archiveBtnDialog.shouldBe(visible).click();
         categoryAlertMessage.shouldHave(text(String.format("Category %s is archived", name)));
-        System.out.println(name);
         return this;
     }
 
     public ProfilePage unArchiveCategory(String name) {
-        showArchivedCheckbox.shouldBe(visible).click();
+        showArchivedCheckbox.click();
         showArchivedCheckbox.shouldHave(cssClass("Mui-checked"));
         $$x(String.format(categoryRowButtonsXpath, name)).last().shouldHave(attribute("aria-label", "Unarchive category")).click();
         unarchiveBtnDialog.click();
         categoryAlertMessage.shouldHave(text(String.format("Category %s is unarchived", name)));
-        System.out.println(name);
         return this;
     }
 }
